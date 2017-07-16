@@ -3,7 +3,11 @@
         <div id="slider__ID" style="background: url(https://vmiis.github.io/equipment-booking/images/background.jpg) no-repeat bottom center; background-size:cover"></div>
     </div>
     <header id=header__ID>
-        <span id=username__ID></span>
+		<div id=right_corner__ID>
+			<span id=database_p__ID><span style='color:green'>&#11044; </span>Connected to production database<br></span>
+			<span id=database_d__ID><span style='color:red'>&#11044; </span>Connected to development database<br></span>
+        	<span id=username__ID></span>
+		</div>
         <nav id=nav__ID>
             <div class="logo">
                 <div id=logo__ID>
@@ -21,6 +25,7 @@
             <ul id=ul__ID>
                 <li data-name=home id=home_page>Home</li>
                 <li data-name=main id=main>Equipment Booking</li>
+				<li data-name=about id=main>About</li>
                 <li id=signin__ID data-b='1'>Sign In</li>
                 <li id=signout__ID data-b='2'>Sign Out</li>
             </ul>
@@ -31,6 +36,9 @@
 </div>
 <script>
 function F__ID(){
+	//------------------------------------
+	if($vm.server=='development') $('#database_d__ID').show();
+	else if($vm.server=='production') $('#database_p__ID').show();
 	//------------------------------------
 	document.title="Business Portal";
 	$('#footer__ID').html("Copyright © "+(new Date()).getFullYear()+", zzm.vmiis@gmail.com<span id=long_footer__ID>, Zhiming Zhou, expert in business portal development, setup from scratch on your Github and Amazon cloud servers and ongoing maintenance.</span>");
@@ -88,13 +96,23 @@ function F__ID(){
     #header__ID{
         height:100px;
     }
-    #username__ID{
-        position:absolute;
+	#right_corner__ID{
+		display:block;
+		position:absolute;
         top:3px;
         right:3px;
         font-size:11px;
         color:#fff;
         z-index: 1;
+	}
+	#database_d__ID{
+		display:none;
+	}
+	#database_p__ID{
+		display:none;
+	}
+    #username__ID{
+		float:right;
     }
     #logo__ID{
         padding-left:20px;
